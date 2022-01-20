@@ -7,7 +7,7 @@
 class Solution:
     
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        vals = []
+        vals = {}
         def internal_func(root,k):
             if not root:
                 return False
@@ -15,8 +15,8 @@ class Solution:
                 # ans = True
                 return True
             else:
-                vals.append(k-root.val)
-                # vals[k-root.val] = True
+                # vals.append(k-root.val)
+                vals[k-root.val] = True
                 # internal_func(root.left, k)
                 # internal_func(root.right, k)
                 return internal_func(root.left, k) or internal_func(root.right, k)
