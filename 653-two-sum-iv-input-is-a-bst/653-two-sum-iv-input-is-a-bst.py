@@ -7,25 +7,17 @@
 class Solution:
     
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-        vals = []
+        vals = {}
         ans = False
         def internal_func(root,k):
             nonlocal ans
             if not root:
                 return False
             if root.val in vals:
-                # print(root.val,k,vals)
                 ans = True
-                # return True
-            # elif root.val > k:
-            #     print(root.val,k,self.vals)
-            #     return False
             else:
-                vals.append(k-root.val)
-                # print(root.val,k,vals)
-                # findTarget(root.left, k-root.val)
-                # findTarget(root.right, k-root.val)
-                # internal_func(root.left, k-root.val)
+                # vals.append(k-root.val)
+                vals[k-root.val] = True
                 internal_func(root.left, k)
                 internal_func(root.right, k)
             # return ans
