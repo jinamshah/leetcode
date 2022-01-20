@@ -14,12 +14,14 @@ class Solution:
             if not root:
                 return False
             if root.val in vals:
-                ans = True
+                # ans = True
+                return True
             else:
                 # vals.append(k-root.val)
                 vals[k-root.val] = True
-                internal_func(root.left, k)
-                internal_func(root.right, k)
+                # internal_func(root.left, k)
+                # internal_func(root.right, k)
+                return internal_func(root.left, k) or internal_func(root.right, k)
             # return ans
-        internal_func(root,k)
-        return ans
+        
+        return internal_func(root,k)
