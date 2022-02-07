@@ -10,21 +10,28 @@ class Solution:
     
     @cache
     def move(self, direction, tup):
-        x,y = tup
-        if direction=='North':
-            return (x, y+1)
-        elif direction=='South':
-            return (x, y-1)
-        elif direction=='West':
-            return (x-1, y)
-        if direction=='East':
-            return (x+1, y)
+        # x,y = tup
+        hash_map = {
+            'North': (tup[0], tup[1]+1), 
+            'South': (tup[0], tup[1]-1),
+            'West': (tup[0]-1, tup[1]),
+            'East': (tup[0]+1, tup[1])
+        }
+        return hash_map[direction]
+#         if direction=='North':
+#             return (x, y+1)
+#         elif direction=='South':
+#             return (x, y-1)
+#         elif direction=='West':
+#             return (x-1, y)
+#         if direction=='East':
+#             return (x+1, y)
         
     def isRobotBounded(self, instructions: str) -> bool:
         current_place = (0,0)
         initial_place = (0,0)
         current_direction = 'North'
-        possible = True
+        # possible = True
         # while possible:
         for instruction in instructions:
             if instruction == 'G':
@@ -35,8 +42,7 @@ class Solution:
             return True
         # elif current_direction != 'North':
         #     recursive_helper(instructions, current_place, current_direction,possible)
-        else:
-            return False
+        return False
         # return recursive_helper(instructions, current_place, current_direction,False)
         # ans =  self.recursive_helper(instructions, current_place, current_direction,False)
         # print(ans)
