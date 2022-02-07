@@ -1,4 +1,5 @@
 class Solution:
+    @cache
     def turn(self,direction, move):
         arr = ['North', 'West', 'South', 'East']
         if move == 'L':
@@ -7,6 +8,7 @@ class Solution:
         else:
             return arr[(arr.index(direction)-1)%4]
     
+    @cache
     def move(self, direction, tup):
         x,y = tup
         if direction=='North':
@@ -29,7 +31,6 @@ class Solution:
                 current_place = self.move(current_direction, current_place)
             else:
                 current_direction = self.turn(current_direction, instruction)
-        print(current_place, current_direction)
         if current_place == (0,0) or current_direction != 'North':
             return True
         # elif current_direction != 'North':
