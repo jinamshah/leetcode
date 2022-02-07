@@ -5,9 +5,12 @@ class Solution:
         total_count = 0
         remainingTruckCapacity = truckSize
         for box in boxTypes:
-            boxCount = min(truckSize, box[0])
-            total_count += (boxCount * box[1])
-            truckSize -= boxCount
+            if truckSize > 0:
+                boxCount = min(truckSize, box[0])
+                total_count += (boxCount * box[1])
+                truckSize -= boxCount
+            else:
+                break
             # if truckSize >= box[0]:
             #     truckSize -= box[0]
             #     total_unit_count += (box[0]*box[1])
