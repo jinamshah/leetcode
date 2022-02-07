@@ -1,25 +1,25 @@
 class Solution:
     @cache
     def turn(self,direction, move):
-        left_map = {
-            'North': 'West',
-            'West': 'South',
-            'South': 'East',
-            'East': 'North'
-        }
-        right_map = {
-            'North': 'East',
-            'West': 'North',
-            'South': 'West',
-            'East': 'South'
-        }
-        return left_map[direction] if move == 'L' else right_map[direction]
-        # arr = ['North', 'West', 'South', 'East']
-        # if move == 'L':
-        #     # val = min(4-arr.index(direction)+1, arr.index(direction)+1)
-        #     return arr[(arr.index(direction)+1)%4]
-        # else:
-        #     return arr[(arr.index(direction)-1)%4]
+        # left_map = {
+        #     'North': 'West',
+        #     'West': 'South',
+        #     'South': 'East',
+        #     'East': 'North'
+        # }
+        # right_map = {
+        #     'North': 'East',
+        #     'West': 'North',
+        #     'South': 'West',
+        #     'East': 'South'
+        # }
+        # return left_map[direction] if move == 'L' else right_map[direction]
+        arr = ['North', 'West', 'South', 'East']
+        if move == 'L':
+            # val = min(4-arr.index(direction)+1, arr.index(direction)+1)
+            return arr[(arr.index(direction)+1)%4]
+        else:
+            return arr[(arr.index(direction)-1)%4]
     
     @cache
     def move(self, direction, tup):
