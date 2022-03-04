@@ -1,21 +1,17 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        current_characters = []
-        final_substrings = []
-        if len(s) > 0:
-            for i in range(len(s)):
-                current_characters = [s[i]]
-                # print(i, len(s))
-                for j in range(i+1, len(s)):
-                    # print(j)
-                    if s[j] in current_characters:
-                        break
-                    else:
-                        current_characters.append(s[j])
-                    # print(current_characters)
-                final_substrings.append(current_characters)
-            final_substrings = sorted(final_substrings, key=len, reverse=True)
-            # print(final_substrings)
-            return len(final_substrings[0])
-        else:
-            return 0
+        left = right = res =  0
+        hashmap = {}
+        while right < len(s):
+            if s[right] not in hashmap:
+                hashmap[s[right]] = 1
+            else:
+                hashmap[s[right]] += 1
+            while hashmap[s[right]] > 1:
+                left_char = s[left]
+                hashmap[s[left]] -= 1
+                left += 1
+            res = max(res, right - left + 1)
+            
+            right += 1
+        return res    
