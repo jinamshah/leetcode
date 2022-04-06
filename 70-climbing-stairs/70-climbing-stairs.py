@@ -1,23 +1,18 @@
 class Solution:
-    def helper(self,i,n, cache):
-        if i == n:
-            return 1
-        elif i > n:
-            return 0
-        elif cache[i] > 0:
-            return cache[i]
-        cache[i] = self.helper(i+1, n,cache) + self.helper(i+2,n,cache)
-        return cache[i]
     def climbStairs(self, n: int) -> int:
+#        Memory optimization
         if n == 1:
             return 1
+        elif n == 2:
+            return 2
 #       Using n+1 because n starts from 1  
-        steps = [0] * (n+1)
-        steps[1] = 1
-        steps[2] = 2
+        second_last_step = 1
+        last_step = 2
+        current_step = second_last_step + last_step
         for i in range(3,n+1):
-            steps[i] = steps[i-1] + steps[i-2]
-        return steps[n]
+            current_step = second_last_step + last_step
+            last_step, second_last_step = current_step, last_step
+        return current_step
         
         # cache = [0] * n
         # return self.helper(0,n,cache)
