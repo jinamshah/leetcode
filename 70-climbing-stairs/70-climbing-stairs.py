@@ -9,6 +9,16 @@ class Solution:
         cache[i] = self.helper(i+1, n,cache) + self.helper(i+2,n,cache)
         return cache[i]
     def climbStairs(self, n: int) -> int:
-        cache = [0] * n
-        return self.helper(0,n,cache)
+        if n == 1:
+            return 1
+#       Using n+1 because n starts from 1  
+        steps = [0] * (n+1)
+        steps[1] = 1
+        steps[2] = 2
+        for i in range(3,n+1):
+            steps[i] = steps[i-1] + steps[i-2]
+        return steps[n]
+        
+        # cache = [0] * n
+        # return self.helper(0,n,cache)
     
