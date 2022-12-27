@@ -6,20 +6,20 @@ class Solution:
             if target == last_element:
                 return True
             elif target < last_element:
-                left,right = 0, len(matrix[i]) -1
-                while left <= right:
-                    pivot_idx = (left+right)//2
-                    pivot_element = matrix[i][pivot_idx]
-                    if target == pivot_element:
+                for j in range(len(matrix[i])):
+                    if target == matrix[i][j]:
                         return True
-                    elif target < pivot_element:
-                        right = pivot_idx - 1
-                    else:
-                        left = pivot_idx + 1
-                # for j in range(len(matrix[i])):
-                #     if target == matrix[i][j]:
-                #         # todo: binary search here
+                # optional: binary search
+                # left,right = 0, len(matrix[i]) -1
+                # while left <= right:
+                #     pivot_idx = (left+right)//2
+                #     pivot_element = matrix[i][pivot_idx]
+                #     if target == pivot_element:
                 #         return True
+                #     elif target < pivot_element:
+                #         right = pivot_idx - 1
+                #     else:
+                #         left = pivot_idx + 1
             elif target > last_element:
                 continue
                 
