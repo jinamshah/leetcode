@@ -4,13 +4,9 @@ class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         left_end, right_end = len(s), len(t)
         
-        def recursive(left_index, right_index):
-            if left_index == left_end:
-                return True
-            elif right_index == right_end:
-                return False
-            if s[left_index] == t[right_index]:
-                left_index += 1
-            right_index += 1
-            return recursive(left_index,right_index)
-        return recursive(0,0)
+        left_pointer, right_pointer = 0,0
+        while left_pointer < left_end and right_pointer < right_end:
+            if s[left_pointer] == t[right_pointer]:
+                left_pointer += 1
+            right_pointer += 1
+        return left_pointer == left_end
