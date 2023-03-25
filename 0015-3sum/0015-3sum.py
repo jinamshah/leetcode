@@ -5,14 +5,17 @@ class Solution:
         target = 0
         for index, num in enumerate(nums):
             hashmap = {}
-            internal_nums = nums[:index] + nums[index+1:]
+            if num > 0:
+                break
+            internal_nums = nums[index+1:]
             left = 0
             right = len(internal_nums)-1
+            
             while left < right:
                 summation = internal_nums[left] + internal_nums[right]
                 if summation + num == target:
                     op = [internal_nums[left], num, internal_nums[right]]
-                    op.sort()
+                    # op.sort()
                     output.append(op)
                     left += 1
                     right -= 1
