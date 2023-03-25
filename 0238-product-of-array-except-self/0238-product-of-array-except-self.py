@@ -4,6 +4,7 @@ class Solution:
         left_prod = [1] * len(nums)
         right_prod = [1] * len(nums)
         right_index = len(nums)-2
+        temp_arr = [1]* len(nums)
         for index in range(1, len(nums)):
             left_prod[index] = left_prod[index-1] * nums[index-1]
             right_prod[right_index] = right_prod[right_index+1] * nums[right_index+1]
