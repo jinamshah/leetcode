@@ -11,6 +11,8 @@ class Solution:
             for i in range(len(candidates)):
                 if i > 0 and candidates[i] == candidates[i-1]:
                     continue
+                if candidates[i] > target:
+                    break
                 dfs(candidates[i+1:], path+[candidates[i]], res, target-candidates[i])
                 
         res = []
